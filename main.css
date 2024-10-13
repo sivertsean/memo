@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100vh;
+}
+
+body {
+    background-color: rgb(194, 194, 194);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: white;
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+}
+
+.inputs {
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.text-field {
+    flex: 1;
+}
+
+.list-container {
+    list-style: none;
+}
+
+.list-item {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.list-date {
+    border-right: 1px solid black;
+    padding-right: 10px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.list-text {
+    padding-left: 10px;
+    font-size: 25px;
+    flex: 1;
+    padding: 10px;
+}
+
+.list-delete-button {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(245, 203, 203);
+    border: none;
+    transform: translateX(100%);
+    transition: transform 0.5s;
+}
+
+.list-item:hover .list-delete-button{
+    transform: translateX(0);
+}
+
+.memo-summary {
+    display: flex;
+    padding: 10px 0;
+}
+
+.memo-info {
+    flex: 1;
+}
