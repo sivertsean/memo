@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo</title>
+    <title>Memo</title>
     <link rel="stylesheet" href="main.css"/> 
     <script src="main.js" defer></script>
 </head>
@@ -11,20 +11,15 @@
     <div class="container">
         <h1>Memo</h1>
         <div class="inputs">
-            <input type="datetime-local"/>
-            <input class="text-field" type="text"/>
-            <button>+ Add</button>
+            <input type="date" id="memo-date"/>
+            <input class="text-field" type="text" id="memo-text"/>
+            <button id="memo-add-button">+ Add</button>
         </div>
-        <ul class="list-container">
-            <li class="list-item">
-                <span class="list-date">12.12 12:00</span>
-                <span class="list-text">exampletext</span>
-                <button class="list-delete-button">x</button>
-            </li>
+        <ul class="list-container" id="list-container">
         </ul>
         <div class="memo-summary">
-            <span class="memo-info">You have <span class="memo-number">8</span> items on your memo</span>
-            <button class="delete-all-button">delete all</button>
+            <span class="memo-info" id="memo-info-number"></span>
+            <button class="delete-all-button" id="delete-all-button">delete all</button>
         </div>
     </div>
 </body>
