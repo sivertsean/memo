@@ -5,7 +5,24 @@ const listContainer = document.getElementById("list-container");
 const memoInfoNumber = document.getElementById("memo-info-number");
 const deleteAllButton = document.getElementById("delete-all-button");
 
+let allMemo = [];
 let memoTotal = 0;
+let memoId = 0;
+
+// Create memo object
+function createMemoObject(date, text) {
+    const object = {
+        date,
+        text,
+        memoId
+    }
+    allMemo.unshift(object);
+    saveMemo();
+    return object;
+}
+
+// Load memo from local storage
+loadMemo();
 
 // Set proper grammar on memo total text
 properText();
@@ -52,8 +69,12 @@ function addMemo() {
     if (text != "") {
         const date = memoDate.value ? new Date(memoDate.value) : null;
 
+        // Create memo Object and add it to allMemo array
+        memoId++;
+        const memo = createMemoObject(date, text);
+
         // Create element and add it to the html
-        const createdMemoElement = createMemoElement(date, text);
+        const createdMemoElement = createMemoElement(memo);
         listContainer.prepend(createdMemoElement);
 
         // Add new memo to total amount of memos
@@ -69,7 +90,7 @@ function addMemo() {
     }
 }
 
-function createMemoElement(date, text) {
+function createMemoElement(memo) {
     // Create li element and add corresponding class to it
     const element = document.createElement("li");
     element.classList.add("list-item");
@@ -79,7 +100,7 @@ function createMemoElement(date, text) {
     listDateElement.classList.add("list-date");
 
     // Check date and format to weekday
-    if (date === null) {
+    if (memo.date === null) {
         listDateElement.innerText = "---";
     } else {
         const weekDay = date.toLocaleString("en-us", { weekday: "short" });
@@ -89,7 +110,7 @@ function createMemoElement(date, text) {
     // Create span element with text and add corresponding class to it
     const listTextElement = document.createElement("span");
     listTextElement.classList.add("list-text");
-    listTextElement.innerText = text;
+    listTextElement.innerText = memo.text;
 
     // Create button and add corresponding class to it
     const listButtonElement = document.createElement("button");
@@ -99,6 +120,14 @@ function createMemoElement(date, text) {
     // Make it possible to delete memo
     listButtonElement.addEventListener("click", event => {
         element.remove();
+
+        // Delete memo object from array
+        const index = allMemo.findIndex((m)=> {
+            return m.memoId === memo.memoId;
+        })
+
+        allMemo.splice(index,1);
+        saveMemo();
 
         // Update total memos
         memoTotal--;
@@ -113,4 +142,19 @@ function createMemoElement(date, text) {
     element.append(listButtonElement);
 
     return element;
+}
+
+// Save and load memo in local storage
+function loadMemo() {
+    const data = localStorage.getItem("memos");
+    allMemo =  JSON.parse(data) || [];
+    for (const memo of allMemo) {
+        const element = createMemoElement(memo);
+        listContainer.append(element);
+    }
+    memoTotal = allMemo.length;
+}
+
+function saveMemo() {
+    localStorage.setItem("memos",JSON.stringify(allMemo));
 }
