@@ -64,10 +64,10 @@ memoText.addEventListener("keypress", event => {
 function addMemo() {
     // Assign value to variables from user input
     const text = memoText.value;
+    const date = memoDate.value;
 
     // Check if text is empty and alert if true
     if (text != "") {
-        const date = memoDate.value ? new Date(memoDate.value) : null;
 
         // Create memo Object and add it to allMemo array
         memoId++;
@@ -98,9 +98,10 @@ function createMemoElement(memo) {
     // Create span element with date and add corresponding class to it
     const listDateElement = document.createElement("span");
     listDateElement.classList.add("list-date");
+    const date = memo.date ? new Date(memo.date) : null;
 
     // Check date and format to weekday
-    if (memo.date === null) {
+    if (date == null) {
         listDateElement.innerText = "---";
     } else {
         const weekDay = date.toLocaleString("en-us", { weekday: "short" });
