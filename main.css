@@ -1,6 +1,17 @@
 :root {
-    --background: #ededed; 
-    --container-background: #ffffff;
+    --background: radial-gradient(circle, rgb(180, 180, 180) 0%, rgb(87, 87, 87) 100%); 
+    --container-background: #828694 ;
+    --button-background: #57a357;
+    --list-button-background: #c45e5e;
+    --list-background: #c7c7c7;
+    --summary-color: #353535;
+    --list-border-divider: #d17ab0;
+    --list-date-color: #797979;
+    --list-text-color: #12561b;
+    --input-background: #b4b4b4;
+
+    --button-background-hover: #356635;
+    --list-button-background-hover: #753939;
 }
 
 * {
@@ -13,7 +24,7 @@ body, html {
 }
 
 body {
-    background-color: var(--background);
+    background: var(--background);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,22 +35,40 @@ body {
     background-color: var(--container-background);
     max-width: 500px;
     width: 100%;
-    padding: 20px;
+    padding: 25px;
     max-height: 500px;
     height: 100%;
     display: flex;
     flex-direction: column;
+    border-radius: 5%;
+}
+
+.container-title {
+    font-size: 25px;
 }
 
 .inputs {
     width: 100%;
     display: flex;
-    padding: 10px 0;
-    gap: 10px;
+    padding: 20px 0;
+    gap: 5px;
+}
+
+.input-date {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    background-color: var(--input-background);
 }
 
 .text-field {
     flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: var(--input-background);
 }
 
 .list-container {
@@ -52,20 +81,24 @@ body {
 }
 
 .list-item {
-    border: 1px solid black;
     display: flex;
-    align-items: center;
-    overflow: hidden;
+    align-items: stretch;
+    overflow-x: hidden;
     min-height: 50px;
+    background-color: var(--list-background);
+    color: var(--list-text-color);
 }
 
 .list-date {
-    border-right: 1px solid black;
+    border-right: 1px solid var(--list-border-divider);
     padding-right: 10px;
     font-size: 18px;
     padding: 10px;
     width: 50px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--list-date-color);
 }
 
 .list-text {
@@ -73,15 +106,20 @@ body {
     font-size: 25px;
     flex: 1;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .list-delete-button {
-    height: 50px;
-    width: 50px;
-    background-color: rgb(245, 203, 203);
+    width: 40px;
+    background-color: var(--list-button-background);
     border: none;
     transform: translateX(100%);
     transition: transform 0.5s;
+}
+
+.list-delete-button:hover {
+    background-color: var(--list-button-background-hover);
 }
 
 .list-item:hover .list-delete-button{
@@ -91,8 +129,33 @@ body {
 .memo-summary {
     display: flex;
     padding: 10px 0;
+    font-size: 20px;
+    color: var(--summary-color);
+    align-items: center;
 }
 
 .memo-info {
     flex: 1;
+    font-size: 16px;
+}
+
+.delete-all-button {
+    padding: 15px;
+    border: none;
+    background-color: var(--list-button-background);
+    font-size: 16px;
+}
+
+.delete-all-button:hover {
+    background-color: var(--list-button-background-hover);
+}
+
+.add-button {
+    padding: 15px;
+    background-color: var(--button-background);
+    border: none;
+}
+
+.add-button:hover {
+    background-color: var(--button-background-hover);
 }
