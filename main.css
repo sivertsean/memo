@@ -48,6 +48,7 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: var(--container-shadow);
+    border-radius: 2%;
 }
 
 .container-title {
