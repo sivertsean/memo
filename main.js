@@ -116,7 +116,11 @@ function createMemoElement(memo) {
     // Create button and add corresponding class to it
     const listButtonElement = document.createElement("button");
     listButtonElement.classList.add("list-delete-button");
-    listButtonElement.innerText = "x";
+
+    // Add an icon to delete button
+    const listButtonIcon = document.createElement("i");
+    listButtonIcon.classList.add("fa-regular","fa-trash-can");
+    listButtonElement.append(listButtonIcon);
 
     // Make it possible to delete memo
     listButtonElement.addEventListener("click", event => {
