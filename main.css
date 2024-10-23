@@ -4,9 +4,9 @@
     /* Theme button */
     --theme-button-background-color: #6b82bd;
     --theme-list-background-color: #e4e6ff;
-    --theme-list-color: #1b2655;
+    --theme-list-color: #142053;
     --theme-button-background-color-hover: #6b82bd;
-    --theme-button-color: #1b2655;
+    --theme-button-color: #0d163f;
 
     --theme-list-color-hover: #bccaee;
 
@@ -91,13 +91,20 @@ body {
     cursor: pointer;
 }
 
+.themes-container:hover .themes-list{
+    display: block;
+}
+
+.themes-list {
+    display: none;
+}
+
 .themes-content {
     background-color: var(--theme-list-background-color);
     color: var(--theme-list-color);
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    
 }
 
 .themes-content:hover {
