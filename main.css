@@ -128,7 +128,7 @@ body {
     text-align: center;
     font-family: "Sarina", cursive;
     color: var(--container-title-color);
-    padding-bottom: 15px;
+    padding-bottom: 40px;
 }
 
 .inputs {
