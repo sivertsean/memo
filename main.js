@@ -46,6 +46,10 @@ deleteAllButton.addEventListener("click", event => {
 
         // Set proper grammar on memo total text
         properText();
+
+        // Empty local storage
+        localStorage.setItem("memos",JSON.stringify(""));
+
     }
 });
 

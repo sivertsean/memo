@@ -1,4 +1,90 @@
 html.sakura {
-    --background: #ffb1db;
-    --container-background: #0a6a87;
+    --background: linear-gradient(0deg, rgba(244,114,155,1) 0%, rgba(255,213,226,1) 100%);
+    
+    /* Theme button */
+    --theme-button-background-color: #f4729b;
+    --theme-list-background-color: #ff9bbb;
+    --theme-list-color: #943553;
+    --theme-button-background-color-hover: #d64673;
+    --theme-button-color: #471122;
+    --theme-list-color-hover: #ffa9c4;
+
+    /* Container */
+    --container-title-color: #c26885;
+    --container-background: #ffdfe9;
+    --container-border: none;
+    --container-shadow: 0px 0px 15px -5px rgba(116, 116, 116, 0.75);
+
+    /* Inputs and add button */
+    --input-background: #fff5f8;
+    --button-background: #e0658c;
+
+    --button-color-hover: #a34a66;
+
+    /* List items */
+    --list-background: #fff5f8;
+    --list-border-divider: var(--container-background);
+    --list-date-color: #88334e;
+    --list-date-background: #ff93b3;
+    --list-text-color: #6d2e48;
+    --trash-icon-color: #a73f60;
+
+    --list-button-background-hover: #753939;
+    --trash-icon-color-hover: #eb9cb5;
+
+    /* Summary */
+    --summary-color: #636363;
+    --delete-all-color: #df4848;
+
+    --delete-all-color-hover: #5e1717;
+}
+
+html.sakura #sakura-theme {
+    font-weight: bold;
+}
+
+html.neon {
+    --background: #131313;
+    
+    /* Theme button */
+    --theme-button-background-color: #202020;
+    --theme-list-background-color: #2e2e2e;
+    --theme-list-color: #858585;
+    --theme-button-background-color-hover: #131313;
+    --theme-button-color: #7dd8d3;
+    --theme-list-color-hover: #202020;
+
+    /* Container */
+    --container-title-color: #00fff2;
+    --container-background: #202020;
+    --container-border: 1px solid #00fff2;
+    --container-shadow: 0px 0px 25px -5px #00ffff;
+
+    /* Inputs and add button */
+    --input-background: #464646;
+    --button-background: #00fff2;
+
+    --button-color-hover: #0d4946;
+
+    /* List items */
+    --list-background: #2e2e2e;
+    --list-border-divider: var(--container-background);
+    --list-date-color: #858585;
+    --list-date-background: #131313;
+    --list-text-color: #00fff2;
+    --trash-icon-color: #9e9e9e;
+
+    --list-button-background-hover: #753939;
+    --trash-icon-color-hover: #474747;
+
+    /* Summary */
+    --summary-color: #858585;
+    --delete-all-color: #df4848;
+
+    --delete-all-color-hover: #5e1717;
+}
+
+html.neon #neon-theme {
+    font-weight: bold;
+    color: #00fff2
 }

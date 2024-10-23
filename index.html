@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,20 +11,29 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Sarina&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="main.js" defer></script>
+    <script src="setTheme.js" defer></script>
 </head>
 <body>
-    <h1 class="container-title">Memo</h1>
-    <div class="container">
-        <div class="inputs">
-            <input type="date" id="memo-date" class="input-date"/>
-            <input class="text-field" type="text" id="memo-text"/>
-            <button id="memo-add-button" class="add-button">+</button>
-        </div>
-        <ul class="list-container" id="list-container">
-        </ul>
-        <div class="memo-summary">
-            <span class="memo-info" id="memo-info-number"></span>
-            <button class="delete-all-button" id="delete-all-button">Delete all</button>
+    <div class="themes-container">
+        <button class="themes-button">Change theme</button>
+        <p class="themes-content" id="default-theme">Default</p>
+        <p class="themes-content" id="sakura-theme">Sakura</p>
+        <p class="themes-content" id="neon-theme">Neon</p>
+    </div>
+    <div class="main-container">
+        <h1 class="container-title">Memo</h1>
+        <div class="container">
+            <div class="inputs">
+                <input type="date" id="memo-date" class="input-date"/>
+                <input class="text-field" type="text" id="memo-text"/>
+                <button id="memo-add-button" class="add-button">+</button>
+            </div>
+            <ul class="list-container" id="list-container">
+            </ul>
+            <div class="memo-summary">
+                <span class="memo-info" id="memo-info-number"></span>
+                <button class="delete-all-button" id="delete-all-button">Delete all</button>
+            </div>
         </div>
     </div>
 </body>
