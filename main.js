@@ -1,3 +1,5 @@
+import { createMemoElement, createMemoObject } from "./memo.js";
+
 const memoDate = document.getElementById("memo-date");
 const memoText = document.getElementById("memo-text");
 const memoAddButton = document.getElementById("memo-add-button");
@@ -8,18 +10,6 @@ const deleteAllButton = document.getElementById("delete-all-button");
 let allMemo = [];
 let memoTotal = 0;
 let memoId = 0;
-
-// Create memo object
-function createMemoObject(date, text) {
-    const object = {
-        date,
-        text,
-        memoId
-    }
-    allMemo.unshift(object);
-    saveMemo();
-    return object;
-}
 
 // Load memo from local storage
 loadMemo();
@@ -75,7 +65,7 @@ function addMemo() {
 
         // Create memo Object and add it to allMemo array
         memoId++;
-        const memo = createMemoObject(date, text);
+        const memo = createMemoObject(date, text, memoId, allMemo);
 
         // Create element and add it to the html
         const createdMemoElement = createMemoElement(memo);
@@ -94,65 +84,6 @@ function addMemo() {
     }
 }
 
-function createMemoElement(memo) {
-    // Create li element and add corresponding class to it
-    const element = document.createElement("li");
-    element.classList.add("list-item");
-
-    // Create span element with date and add corresponding class to it
-    const listDateElement = document.createElement("span");
-    listDateElement.classList.add("list-date");
-    const date = memo.date ? new Date(memo.date) : null;
-
-    // Check date and format to weekday
-    if (date == null) {
-        listDateElement.innerText = "---";
-    } else {
-        const weekDay = date.toLocaleString("en-us", { weekday: "short" });
-        listDateElement.innerText = weekDay;
-    }
-
-    // Create span element with text and add corresponding class to it
-    const listTextElement = document.createElement("span");
-    listTextElement.classList.add("list-text");
-    listTextElement.innerText = memo.text;
-
-    // Create button and add corresponding class to it
-    const listButtonElement = document.createElement("button");
-    listButtonElement.classList.add("list-delete-button");
-
-    // Add an icon to delete button
-    const listButtonIcon = document.createElement("i");
-    listButtonIcon.classList.add("fa-regular","fa-trash-can");
-    listButtonElement.append(listButtonIcon);
-
-    // Make it possible to delete memo
-    listButtonElement.addEventListener("click", event => {
-        element.remove();
-
-        // Delete memo object from array
-        const index = allMemo.findIndex((m)=> {
-            return m.memoId === memo.memoId;
-        })
-
-        allMemo.splice(index,1);
-        saveMemo();
-
-        // Update total memos
-        memoTotal--;
-
-        // Set proper grammar on memo total text
-        properText();
-    })
-
-    // Add elements to the main li element
-    element.append(listDateElement);
-    element.append(listTextElement);
-    element.append(listButtonElement);
-
-    return element;
-}
-
 // Save and load memo in local storage
 function loadMemo() {
     const data = localStorage.getItem("memos");
@@ -162,8 +93,4 @@ function loadMemo() {
         listContainer.append(element);
     }
     memoTotal = allMemo.length;
-}
-
-function saveMemo() {
-    localStorage.setItem("memos",JSON.stringify(allMemo));
 }
