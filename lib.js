@@ -1,4 +1,4 @@
-export function createMemoElement(memo) {
+function createMemoElement(memo) {
     // Create li element and add corresponding class to it
     const element = document.createElement("li");
     element.classList.add("list-item");
@@ -58,7 +58,7 @@ export function createMemoElement(memo) {
 }
 
 // Create memo object
-export function createMemoObject(date, text, memoId, allMemo) {
+function createMemoObject(date, text, memoId, allMemo) {
     const object = {
         date,
         text,
@@ -72,4 +72,46 @@ export function createMemoObject(date, text, memoId, allMemo) {
 // Save and load memo in local storage
 function saveMemo(allMemo) {
     localStorage.setItem("memos",JSON.stringify(allMemo));
+}
+
+export function loadMemo(allMemo, listContainer) {
+    const data = localStorage.getItem("memos");
+    allMemo =  JSON.parse(data) || [];
+    for (const memo of allMemo) {
+        const element = createMemoElement(memo);
+        listContainer.append(element);
+    }
+    return allMemo.length;
+}
+
+// Add new memo on click/enter
+export function addMemo(memoText, memoDate, memoId, listContainer, allMemo) {
+    // Assign value to variables from user input
+    const text = memoText.value;
+    const date = memoDate.value;
+
+    // Check if text is empty and alert if true
+    if (text != "") {
+
+        // Create memo Object and add it to allMemo array
+        memoId++;
+        const memo = createMemoObject(date, text, memoId, allMemo);
+
+        // Create element and add it to the html
+        const createdMemoElement = createMemoElement(memo);
+        listContainer.prepend(createdMemoElement);
+    } else {
+        alert("You cannot add an empty memo.");
+    }
+}
+
+// Set proper grammar on memo total text
+export function properText(memoTotal, memoInfoNumber) {
+    if (memoTotal === 0) {
+        memoInfoNumber.innerText = "You have no memos";
+    } else if (memoTotal === 1) {
+        memoInfoNumber.innerText = `You have ${memoTotal} memo`;
+    } else {
+        memoInfoNumber.innerText = `You have ${memoTotal} memos`;
+    }
 }
