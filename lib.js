@@ -100,9 +100,12 @@ export function addMemo(memoText, memoDate, memoId, listContainer, allMemo) {
         // Create element and add it to the html
         const createdMemoElement = createMemoElement(memo);
         listContainer.prepend(createdMemoElement);
-    } else {
-        alert("You cannot add an empty memo.");
+
+        return true;
     }
+
+    alert("You cannot add an empty memo.");
+    return false;
 }
 
 // Set proper grammar on memo total text

@@ -35,8 +35,9 @@ deleteAllButton.addEventListener("click", event => {
 
 // Create memo on button click
 memoAddButton.addEventListener("click", event => {
-    addMemo(memoText, memoDate, memoId, listContainer, allMemo);
-    memoTotal++;
+    if (addMemo(memoText, memoDate, memoId, listContainer, allMemo)) {
+        memoTotal++;
+    }
      // Update information and clear fields
     // Set proper grammar on memo total text
     properText(memoTotal, memoInfoNumber);
@@ -47,8 +48,9 @@ memoAddButton.addEventListener("click", event => {
 // Create memo when pressing Enter
 memoText.addEventListener("keypress", event => {
     if(event.key === "Enter") {
-        addMemo(memoText, memoDate, memoId, listContainer, allMemo);
-        memoTotal++;
+        if (addMemo(memoText, memoDate, memoId, listContainer, allMemo)) {
+            memoTotal++;
+        }
         // Update information and clear fields
         // Set proper grammar on memo total text
         properText(memoTotal, memoInfoNumber);
